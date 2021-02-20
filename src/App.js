@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
-import logo from './logo.svg';
-import './App.css';
-import Solid from './components/Solid'
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Solid from "./components/Solid";
+import { MatterContext } from "./MatterContext";
 
 function App() {
-  const [elements, setElements] = useState({
-    type: 'plasma', name: 'lightning',
-    type: 'plasma', name: 'sun',
-    type: 'plasma', name: 'stars'
-  })
+  const [elements, setElements] = useState([
+    { type: "plasma", name: "lightning"},
+    { type: "plasma", name: "sun"},
+    { type: "plasma", name: "stars"},
+]);
+
   return (
-    <div className="container">
-      <Solid />
-    </div>
+    <MatterContext.Provider value={elements}>
+      <div className="container">
+        <Solid />
+      </div>
+    </MatterContext.Provider>
   );
 }
 
